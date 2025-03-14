@@ -1,10 +1,13 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { NoteRepository } from './domain/services/note-repository.interface';
+import { NoteRepositoryInMemory } from './infrastructure/services/note-repository/note-repository-in-memory';
+import { AppController } from './interface/app.controller';
 
 @Module({
   imports: [],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    { provide: NoteRepository, useClass: NoteRepositoryInMemory },
+  ],
 })
-export class AppModule {}
+export class AppModule { }
