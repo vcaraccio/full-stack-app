@@ -18,6 +18,9 @@ export class NoteRepositoryInMemory implements NoteRepository {
   }
 
   findOne(id: number): Promise<Note | undefined> {
+    if (!id || isNaN(id)) {
+      return Promise.resolve(undefined);
+    }
     return Promise.resolve(this.notes.get(id));
   }
 
