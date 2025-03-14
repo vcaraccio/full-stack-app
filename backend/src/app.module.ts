@@ -5,7 +5,9 @@ import { AppController } from './interface/app.controller';
 
 @Module({
   imports: [],
-  controllers: [AppController],
+  controllers: [
+    AppController
+  ],
   providers: [
     { provide: NoteRepository, useClass: NoteRepositoryInMemory },
   ],
