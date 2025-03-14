@@ -3,7 +3,7 @@ import { Note } from 'src/domain/models/note';
 import { NoteRepository } from 'src/domain/services/note-repository.interface';
 
 @Injectable()
-export class NoteRepositoryInMemory implements NoteRepository {
+export class NoteRepositoryInMemory extends NoteRepository {
 
   private readonly notes: Map<number, Note> = new Map();
 

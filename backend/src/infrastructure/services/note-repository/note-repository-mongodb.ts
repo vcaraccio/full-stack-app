@@ -3,7 +3,7 @@ import { Note } from 'src/domain/models/note';
 import { NoteRepository } from 'src/domain/services/note-repository.interface';
 
 @Injectable()
-export class NoteRepositoryMongoDB implements NoteRepository {
+export class NoteRepositoryMongoDB extends NoteRepository {
 
   create(title: string, description: string): Promise<Note> {
     throw new Error('Method not implemented.');

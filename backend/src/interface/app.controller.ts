@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, NotFoundException, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, NotFoundException, Param, Post, Put, Query } from '@nestjs/common';
 import { Note } from 'src/domain/models/note';
 import { NoteRepository } from 'src/domain/services/note-repository.interface';
 
@@ -12,7 +12,7 @@ export class AppController {
     return this.noteRepo.findAll();
   }
 
-  @Get(':id')
+  @Get(':id') // GET http://localhost:3000/api/v1/notes/123456
   async getNoteById(@Query('id') id: string): Promise<Note> {
     const note = await this.noteRepo.findOne(Number(id));
     if (!note) {
@@ -27,12 +27,12 @@ export class AppController {
   }
 
   @Delete(':id')
-  deleteNoteById(@Query('id') id: string): Promise<void> {
+  deleteNoteById(@Param('id') id: string): Promise<void> {
     return this.noteRepo.delete(Number(id));
   }
 
   @Put(':id')
-  updateNoteById(@Query('id') id: string, @Body() note: { title: string; description: string; }): Promise<void> {
+  updateNoteById(@Param('id') id: string, @Body() note: { title: string; description: string; }): Promise<void> {
     return this.noteRepo.update(Number(id), note.title, note.description);
   }
 
