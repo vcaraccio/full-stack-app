@@ -1,0 +1,21 @@
+{
+  "name": "full-stack-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install:backend": "npm install --prefix ./backend",
+    "install:frontend": "npm install --prefix ./frontend",
+    "install:all": "concurrently -p \"[{name}]\" -n FR,BA -c magenta,blue \"npm:install:frontend\" \"npm:install:backend\"",
+    "start:backend": "npm run start:dev --prefix ./backend",
+    "start:frontend": "npm run start --prefix ./frontend",
+    "start:all": "concurrently -p \"[{name}]\" -n FR,BA -c magenta,blue \"npm:start:frontend\" \"npm:start:backend\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

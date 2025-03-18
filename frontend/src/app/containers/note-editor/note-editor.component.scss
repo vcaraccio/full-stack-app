@@ -1,0 +1,12 @@
+mat-card {
+  margin: 1rem;
+}
+
+mat-card-content {
+  gap: 1rem;
+  display: flex;
+
+  mat-form-field+mat-form-field {
+    flex: 1 1 auto
+  }
+}
